@@ -1,5 +1,6 @@
-// 2012-06-21 - Oregon V2 decoder added - Dominique Pierre
-// 2012-06-21 - Oregon V3 decoder revisited - Dominique Pierre
+// 2012-09-06 - Oregon V2 decoder modified - Olivier Lebrun <olivier.lebrun@connectingstuff.net>
+// 2012-06-21 - Oregon V2 decoder added - Dominique Pierre (zzdomi)
+// 2012-06-21 - Oregon V3 decoder revisited - Dominique Pierre (zzdomi)
 // New code to decode OOK signals from weather sensors, etc.
 // 2010-04-11 <jcw@equi4.com> http://opensource.org/licenses/mit-license.php
 
