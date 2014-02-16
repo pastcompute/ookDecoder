@@ -2,12 +2,15 @@
 // 2012-06-21 - Oregon V2 decoder added - Dominique Pierre (zzdomi)
 // 2012-06-21 - Oregon V3 decoder revisited - Dominique Pierre (zzdomi)
 // New code to decode OOK signals from weather sensors, etc.
-// 2010-04-11 <jcw@equi4.com> http://opensource.org/licenses/mit-license.php
+// 2010-04-11 Jean-Claude Wippler <jcw@equi4.com>
+
+//Todo merge back from https://github.com/jcw/jeelib/tree/master/examples/RF12/ookRelay2
 
 #include "DecodeOOK.h"
 #include "CrestaDecoder.h"
 #include "HezDecoder.h"
 #include "KakuDecoder.h"
+#include "OregonDecoderV1.h"
 #include "OregonDecoderV2.h"
 #include "OregonDecoderV3.h"
 #include "XrfDecoder.h"
@@ -17,6 +20,7 @@
 #include "VisonicDecoder.h"
 
 //433
+OregonDecoderV1 orscV1;
 OregonDecoderV2 orscV2;
 OregonDecoderV3 orscV3;
 CrestaDecoder cres;
@@ -98,6 +102,11 @@ void loop () {
 
     //433Mhz
     if (p != 0) {
+        Serial.print("[pulse]");
+        Serial.print(p, HEX);
+        Serial.println();
+        if (orscV1.nextPulse(p))
+            reportSerial("OSV1", orscV1);
         if (orscV2.nextPulse(p))
             reportSerial("OSV2", orscV2);  
         if (orscV3.nextPulse(p))
