@@ -6,6 +6,14 @@
 
 //Todo merge back from https://github.com/jcw/jeelib/tree/master/examples/RF12/ookRelay2
 
+//http://playground.arduino.cc/Code/HomeEasy
+
+#include <RCSwitch.h>
+
+RCSwitch mySwitch = RCSwitch();
+int incomingByte = 0;   // for incoming serial data
+
+
 #include "DecodeOOK.h"
 #include "CrestaDecoder.h"
 #include "HezDecoder.h"
@@ -88,6 +96,8 @@ void setup () {
    DDRE  &= ~_BV(PE5);
    PORTE &= ~_BV(PE5);
 #endif
+
+    mySwitch.enableTransmit(10);  // Using Pin #10
 }
 
 void loop () {
@@ -132,5 +142,10 @@ void loop () {
 //        if (fsx.nextPulse(p))
 //            reportSerial("FSX", fsx);
 //    }
+    if (Serial.available() > 0) {
+        // read the incoming byte:
+        incomingByte = Serial.read();
+        mySwitch.send(5393, 24);
+    }
 }
 
