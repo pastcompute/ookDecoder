@@ -18,8 +18,8 @@ public:
     }
 
     virtual char decode (word width) {
-        if (200 <= width && width < 1200) {
-            byte w = width >= 700;
+        if (300 <= width && width < 1300) {
+            byte w = width >= 800;
             switch (state) {
                 case UNKNOWN:
                     if (w != 0) {
